@@ -9,23 +9,26 @@ import {
 import { useRouter } from "next/router";
 import * as poseDetection from "@tensorflow-models/pose-detection";
 
+import Link from "next/link";
+import Webcam from "react-webcam";
+import { loadMoveNetDetector, detect } from "@ai/movenet";
+
+import { useAppDispatch } from "@toolkit/hook";
+import { practiceActions } from "@features/practice/practiceSlice";
+import { postPracticeStart } from "@api/dance/postPracticeStart";
+
 import MainWrapper from "../Wrapper/MainWarpper";
 import BottomWrapper from "../Wrapper/BottomWrapper";
 
+import { getFullScreen } from "@util/screenMode";
+import { ReloadIcon } from "@radix-ui/react-icons";
 import { Button } from "@components/ui/button";
 import { IPractice } from "@type/practice";
 import LoadingModal from "./LoadingModal";
 import StandByModal from "./StandByModal";
 import { Expand } from "lucide-react";
-import { getFullScreen } from "@util/screenMode";
 import Loading from "@components/Loading";
-import Link from "next/link";
 import Logo from "@components/Logo";
-import { loadMoveNetDetector, detect } from "@ai/movenet";
-import { practiceActions } from "@features/practice/practiceSlice";
-import { useAppDispatch } from "@toolkit/hook";
-import Webcam from "react-webcam";
-import { postPracticeStart } from "@api/dance/postPracticeStart";
 
 export default function Prepare({
   data,
@@ -36,9 +39,10 @@ export default function Prepare({
 }) {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const [loading, setLoading] = useState(true);
-  const [isDevice, setIsDevice] = useState(false);
-  const [isDetector, setIsDetector] = useState(false);
+  const [installLoading, setInstallLoading] = useState(true); // 모델, 웹캠 로딩
+  const [isDevice, setIsDevice] = useState(false); // 웹캠 유무 확인
+  const [isLoading, setIsLoading] = useState(false); // 버튼 로딩 처리
+  const [isDetector, setIsDetector] = useState(false); // movenet 유무 확인
   const webcamRef = useRef<Webcam>(null);
 
   // 카메라 유무 확인
@@ -67,7 +71,7 @@ export default function Prepare({
           clearInterval(modelPlayCheck);
           // 모델 로드 성공
           setIsDetector(true);
-          setLoading(false);
+          setInstallLoading(false);
         } else {
           // 30초가 지난 경우 로딩 실패 처리
           elapsedTime += 1;
@@ -75,7 +79,7 @@ export default function Prepare({
             clearInterval(modelPlayCheck);
             //모델 로드 실패
             setIsDetector(false);
-            setLoading(false);
+            setInstallLoading(false);
           }
         }
       }, 1000);
@@ -110,8 +114,9 @@ export default function Prepare({
           height: "0%",
         }}
       />
+
       <MainWrapper>
-        {loading ? (
+        {installLoading ? (
           <LoadingModal>
             <div className="col-center h-full w-full">
               <div className="col-between h-[80%] w-full">
@@ -137,17 +142,15 @@ export default function Prepare({
             <div className="col-center h-full w-full">
               <div className="col-between h-[80%] w-full">
                 <div>
-                  <div>
-                    <div className="space-x-2">
-                      {isDevice ? (
-                        <span className="font-bold text-green-500">✓</span>
-                      ) : (
-                        <span className="font-bold text-red-500">✕</span>
-                      )}
-                      <span>웹캠 유무 확인</span>
-                    </div>
+                  <div className="space-x-2 text-xl font-medium">
+                    {isDevice ? (
+                      <span className="font-bold text-green-500">✓</span>
+                    ) : (
+                      <span className="font-bold text-red-500">✕</span>
+                    )}
+                    <span>웹캠 유무 확인</span>
                   </div>
-                  <div className="space-x-2">
+                  <div className="space-x-2 text-xl font-medium">
                     {isDetector ? (
                       <span className="font-bold text-green-500">✓</span>
                     ) : (
@@ -160,34 +163,47 @@ export default function Prepare({
                 <div className="col-center">
                   {/* //? 연습과 실전 모드 변수 필요 */}
                   {isDevice && isDetector ? (
-                    <p className="text-mediu,">
+                    <p className="text-lg font-medium">
                       연습 모드 준비가 완료되었습니다.
                     </p>
                   ) : (
-                    <p className="text-medium">
+                    <p className="text-lg font-medium">
                       연습 모드 조건에 부합하지 않습니다.
                     </p>
                   )}
                 </div>
 
                 <div className="col-center w-full gap-3">
-                  <Button
-                    onClick={async () => {
-                      const response = await postPracticeStart(
-                        data.dancerPost.postId
-                      );
-                      dispatch(practiceActions.setFeedbackId(response.feedbackId)); // feedbackId 저장
-                      getFullScreen();
-                      dispatch(practiceActions.moveNextStep());
-                      // POST 요청
-                    }}
-                    className="row-center w-full gap-2"
-                    disabled={!isDevice || !isDetector}
-                    variant={isDevice && isDetector ? "default" : "destructive"}
-                  >
-                    <span className="text-lg">연습 시작</span>
-                    <Expand />
-                  </Button>
+                  {isLoading ? (
+                    <Button disabled>
+                      <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+                      로딩 중..
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={async () => {
+                        setIsLoading(true);
+                        const response = await postPracticeStart(
+                          data.dancerPost.postId
+                        );
+                        dispatch(
+                          practiceActions.setFeedbackId(response.feedbackId)
+                        ); // feedbackId 저장
+                        getFullScreen();
+                        dispatch(practiceActions.moveNextStep());
+                        // POST 요청
+                      }}
+                      className="row-center w-full gap-2"
+                      disabled={!isDevice || !isDetector}
+                      variant={
+                        isDevice && isDetector ? "default" : "destructive"
+                      }
+                    >
+                      <span className="text-lg">연습 시작</span>
+                      <Expand />
+                    </Button>
+                  )}
+
                   <Link
                     href={`/dancer/${data.dancerPost.postId}`}
                     replace={true}
@@ -206,7 +222,7 @@ export default function Prepare({
 
       <BottomWrapper>
         <p className="md:text-lg md:font-medium">
-          연습 완료 후, AI와 댄서의 피드백 서비스를 이용 가능 합니다.
+          연습 완료 후, AI와 댄서의 피드백 서비스를 이용할 수 있습니다.
         </p>
       </BottomWrapper>
     </div>
