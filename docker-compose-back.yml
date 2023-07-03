@@ -1,0 +1,83 @@
+version: "3.3"
+
+services:
+  django:
+    container_name: django
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/usr/src/django
+    command: >
+      sh -c "rm -rf /usr/src/django/accounts/migrations/* &&
+            touch /usr/src/django/accounts/migrations/__init__.py &&
+            rm -rf /usr/src/django/comments/migrations/* &&
+            touch /usr/src/django/comments/migrations/__init__.py &&
+            rm -rf /usr/src/django/dance/migrations/* &&
+            touch /usr/src/django/dance/migrations/__init__.py &&
+            rm -rf /usr/src/django/feedbacks/migrations/* &&
+            touch /usr/src/django/feedbacks/migrations/__init__.py &&
+            rm -rf /usr/src/django/like/migrations/* &&
+            touch /usr/src/django/like/migrations/__init__.py &&
+            rm -rf /usr/src/django/posts/migrations/* &&
+            touch /usr/src/django/posts/migrations/__init__.py &&
+            rm -rf /usr/src/django/search_history/migrations/* &&
+            touch /usr/src/django/search_history/migrations/__init__.py &&
+            rm -rf /usr/src/django/video_section/migrations/* &&
+            touch /usr/src/django/video_section/migrations/__init__.py &&
+            rm -rf /usr/src/django/videos/migrations/* &&
+            touch /usr/src/django/videos/migrations/__init__.py &&
+            rm -rf /usr/src/django/view_history/migrations/* &&
+            touch /usr/src/django/view_history/migrations/__init__.py &&
+            python manage.py makemigrations &&
+            python manage.py migrate &&
+            python manage.py flush --no-input &&
+            python manage.py seed_users &&
+            python manage.py seed_posts &&
+            python manage.py seed_comments &&
+            python manage.py seed_like &&
+            python manage.py seed_view_history &&
+            python manage.py seed_video_section &&
+            python manage.py seed_search &&
+            python manage.py runserver 0.0.0.0:8000"
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      DJANGO_TIME_ZONE: ${DJANGO_TIME_ZONE}
+      DJANGO_LANGUAGE_CODE: ${DJANGO_LANGUAGE_CODE}
+      DJANGO_NEXTJS_URL: ${DJANGO_NEXTJS_URL}
+      DJANGO_S3_ACCESS_KEY_ID: ${DJANGO_S3_ACCESS_KEY_ID}
+      DJANGO_S3_SECRET_ACCESS_KEY: ${DJANGO_S3_SECRET_ACCESS_KEY}
+      TZ: "Asia/Seoul"
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_HOST: ${MYSQL_HOST}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    restart: always
+    ports:
+      - "8000:8000"
+    networks:
+      - server-network
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    restart: always
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./mysqldb/db:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: "Asia/Seoul"
+    networks:
+      - server-network
+
+networks:
+  server-network:
+    driver: bridge
