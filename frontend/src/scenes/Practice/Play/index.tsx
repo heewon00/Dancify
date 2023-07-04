@@ -12,6 +12,7 @@ import SectionResult from "./SectionResult";
 import { Button } from "@components/ui/button";
 import { postsPracticeData } from "@api/dance/postPracticeData";
 import { ReloadIcon } from "@radix-ui/react-icons";
+import ForceEndButton from "./SectionForceButton";
 
 export default function Play({
   data,
@@ -96,37 +97,35 @@ export default function Play({
             로딩 중..
           </Button>
         ) : selectedSections.length <= playIndex + 1 ? (
+          // 전체 완료
           <Button
             disabled={!isFinished}
-            onClick={() => {
+            onClick={async () => {
               setIsLoading(true);
-              handleMoveNextStep;
+              await handleMoveNextStep();
+              setIsLoading(false);
             }}
           >
             연습 완료
           </Button>
         ) : isFinished ? (
-          //구간 완료
+          // 구간 완료
           <Button
             disabled={isLoading}
-            onClick={() => {
+            onClick={async () => {
               setIsLoading(true);
-              handleMoveNextSection;
+              await handleMoveNextSection();
+              setIsLoading(false);
             }}
           >
             다음 구간
           </Button>
         ) : (
-          //강제 이동
-          <Button
-            disabled={isLoading}
-            onClick={() => {
-              setIsLoading(true);
-              handleForceEndSection;
-            }}
-          >
-            다음 구간
-          </Button>
+          // 넘어가기
+          <ForceEndButton
+            setIsLoading={setIsLoading}
+            handleForceEndSection={handleForceEndSection}
+          />
         )}
       </BottomWrapper>
     </div>

@@ -1,15 +1,24 @@
-import { useAppSelector } from "@toolkit/hook";
-import ReactPlayer from "react-player";
 import { useEffect, useRef, useState } from "react";
+import { useAppSelector } from "@toolkit/hook";
+
+import ReactPlayer from "react-player";
+import { Separator } from "@components/ui/separator";
+
 import {
   convertKey,
   preprocessErrorTimeData,
 } from "@util/preprocessErrorTimeData";
-import { IFeedbackDetail, TError } from "@type/feedbacks";
-import { feedbackJsonData } from "@scenes/FeedBacks/data/feedbackJsonData";
-import { Separator } from "@components/ui/separator";
 
-export default function DanceablePlayer({ data }: { data: IFeedbackDetail }) {
+import { IFeedbackDetail, TError } from "@type/feedbacks";
+import { FeedbackJsonData } from "@type/feedbackJson";
+
+export default function DanceablePlayer({
+  data,
+  bestJsonData,
+}: {
+  data: IFeedbackDetail;
+  bestJsonData: FeedbackJsonData;
+}) {
   // 동영상 및 진행 바 관련
   const playerRef = useRef<ReactPlayer>(null);
   const progressBarRef = useRef<HTMLDivElement | null>(null);
@@ -23,9 +32,21 @@ export default function DanceablePlayer({ data }: { data: IFeedbackDetail }) {
   // 동영상이 바뀔 때마다 진행 바 초기화
   useEffect(() => {
     const progressBar = progressBarRef.current;
-    const player = playerRef.current;
-    if (progressBar && player) setDuration(player.getDuration());
-  }, []);
+
+    if (progressBar) {
+      const handleTimeUpdate = () => {
+        const player = playerRef.current;
+        console.log(player)
+        if (player) {
+          console.log("player.getDuration()", player.getDuration());
+          setDuration(player.getDuration());
+        }
+      };
+
+      const interval = setInterval(handleTimeUpdate, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [sectionIndex]);
 
   const borderColors = [
     "rgb(255, 99, 132)",
@@ -42,17 +63,35 @@ export default function DanceablePlayer({ data }: { data: IFeedbackDetail }) {
 
   return (
     <div className="space-y-4">
-      <div className="overflow-hidden rounded-md">
-        <ReactPlayer
-          ref={playerRef}
-          url={data.sections[sectionIndex].danceablevideo}
-          controls
-          width={"100%"}
-          height={"100%"}
-        />
+      <div className="space-y-4">
+        {/* 원본 비율로 세로로 길게 영상 노출 */}
+        <div className="overflow-hidden rounded-md sm:hidden">
+          <ReactPlayer
+            ref={playerRef}
+            url={data.sections[sectionIndex].danceableVideo}
+            controls
+            width={"100%"}
+            height={"100%"}
+          />
+        </div>
+
+        {/* 세로로 길어지는 것을 줄여서 영상 노출 */}
+        <div className="hidden overflow-hidden rounded-md sm:block">
+          <div className="relative pt-[56.25%]">
+            <ReactPlayer
+              ref={playerRef}
+              url={data.sections[sectionIndex].danceableVideo}
+              playing={true}
+              controls
+              width="100%"
+              height="100%"
+              className="absolute left-0 top-0 h-full w-full"
+            />
+          </div>
+        </div>
       </div>
 
-      <div className="w-full space-y-1 rounded-md bg-white p-4 text-black">
+      <div className="w-full space-y-1 rounded-md border bg-white p-4 text-black">
         <div>
           <h2 className="mb-4 text-xl font-bold">
             신체부위 별 댄서와 다른 구간
@@ -61,7 +100,7 @@ export default function DanceablePlayer({ data }: { data: IFeedbackDetail }) {
         </div>
 
         {/* 전체 길이 바 영역 */}
-        {Object.entries(feedbackJsonData.error).map(
+        {Object.entries(bestJsonData.error).map(
           ([errorType, errorTimes], index) => (
             <div
               key={errorType}
@@ -92,7 +131,7 @@ export default function DanceablePlayer({ data }: { data: IFeedbackDetail }) {
 
         {/* 범례 */}
         <ul className="m-0 flex flex-wrap items-center gap-4 p-0">
-          {Object.keys(feedbackJsonData.error).map((errorType, index) => (
+          {Object.keys(bestJsonData.error).map((errorType, index) => (
             <div key={index + "errorType"} className="row-center gap-2">
               <div
                 style={{
@@ -107,7 +146,7 @@ export default function DanceablePlayer({ data }: { data: IFeedbackDetail }) {
                   {convertKey(errorType as TError)}
                 </span>
                 <span className="text-xs font-thin text-gray-800">
-                  {feedbackJsonData.error[errorType as TError].length}회
+                  {bestJsonData.error[errorType as TError].length}회
                 </span>
               </div>
             </div>

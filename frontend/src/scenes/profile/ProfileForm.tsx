@@ -44,6 +44,11 @@ export default function ProfileForm() {
 
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
+    defaultValues: {
+      nickname: "",
+      email: "",
+      description: "",
+    }
   });
 
   useEffect(() => {
@@ -55,7 +60,7 @@ export default function ProfileForm() {
         const { nickname, email, description } = data;
         form.setValue("nickname", nickname);
         form.setValue("email", email);
-        form.setValue("description", description);
+       {description ?  form.setValue("description", description): form.setValue("description", undefined)}
         return;
       }
     }
@@ -97,7 +102,7 @@ export default function ProfileForm() {
             <Image src={imageUrl} alt="preview" width={80} height={80} />
           ) : (
             <Image
-              src={"/images/avatar.jpg"}
+              src={"/images/avatar.png"}
               alt="profile_image"
               width={80}
               height={80}

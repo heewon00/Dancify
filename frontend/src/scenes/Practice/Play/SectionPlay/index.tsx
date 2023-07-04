@@ -1,9 +1,8 @@
 import { practiceActions } from "@features/practice/practiceSlice";
 import { useAppDispatch, useAppSelector } from "@toolkit/hook";
-import { IPoseMessages, IPractice } from "@type/practice";
+import { IPoseMessages, IPractice, TPoseMessage } from "@type/practice";
 import { Pose } from "@type/moveNet";
 
-import { motion } from "framer-motion";
 import {
   useEffect,
   useRef,
@@ -17,6 +16,7 @@ import * as poseDetection from "@tensorflow-models/pose-detection";
 import { danceableBodyCheck, runMovenet } from "@ai/movenet";
 import { Button } from "@components/ui/button";
 import readDancerJson from "@api/feedbacks/readDancerJson";
+import { cn } from "@lib/utils";
 
 export default function SectionPlay({
   data,
@@ -47,7 +47,7 @@ export default function SectionPlay({
   });
 
   const [count, setCount] = useState(5); // 카운트 다운 5초
-  const [poseMessage, setPoseMessage] = useState(""); //? 1초 마다 동작 평가를 저장
+  const [poseMessage, setPoseMessage] = useState<TPoseMessage>(""); //? 1초 마다 동작 평가를 저장
 
   const {
     playIndex,
@@ -60,23 +60,38 @@ export default function SectionPlay({
     sectionPracticeArr,
   } = useAppSelector((state) => state.practice); // 선택된 섹션 인덱스 배열 가져오기
 
-  const sectionId = data.sections[playIndex].sectionId;
+  // 선택된 구간의 인덱스
+  const sectionIndex = data.sections.findIndex(
+    (section) => section.sectionId === selectedSections[playIndex]
+  );
+  const sectionId = data.sections[sectionIndex].sectionId;
 
+  // 데이터를 가져올 URL 설정
   const [dancerJsonData, setDancerJsonData] = useState<Pose[][] | null>();
   useEffect(() => {
-    // 데이터를 가져올 URL 설정
-    const firstJsonUrl = data.sections[playIndex].keypoints;
-
+    // 선택된 섹션의 첫번째 url 가져오기
+    const firstJsonUrl = data.sections[sectionIndex].keypoints;
     // 최초, 최고 JSON 데이터 받기
     readDancerJson(firstJsonUrl, setDancerJsonData);
   }, [playIndex, data.sections]);
 
   // 연습 모드 or 실전 모드 구분 후 선택된 섹션의 url 배열 가져오기
-  const selectedSectionUrls = isRealMode
-    ? [{ video: data.dancerPost.video }]
-    : data.sections.filter((section, index) =>
-        selectedSections.includes(index)
+  const selectedSectionsData = isRealMode
+    ? [data.sections[0]]
+    : data.sections.filter((section) =>
+        selectedSections.includes(section.sectionId)
       );
+
+  // 동영상 및 진행 바 관련
+  const playerRef = useRef<ReactPlayer>(null);
+  const progressBarRef = useRef<HTMLDivElement | null>(null);
+  const [duration, setDuration] = useState(0);
+
+  const getVideoDuration = useCallback(() => {
+    const progressBar = progressBarRef.current;
+    const player = playerRef.current;
+    if (progressBar && player) setDuration(player.getDuration());
+  }, []);
 
   // 댄서와 웹캠 화면 사이즈 조정
   const handleScreenResize = () => {
@@ -101,6 +116,7 @@ export default function SectionPlay({
   // 1.5초 뒤와 resize 시 캔버스 크기 변경
   useEffect(() => {
     handleScreenResize();
+    getVideoDuration();
     danceableBodyCheck(webcamRef, bodyCheckCallback); // 전신 체크 함수 실행
     window.addEventListener("resize", handleScreenResize);
     const tick = setTimeout(() => handleScreenResize(), 3000);
@@ -183,7 +199,7 @@ export default function SectionPlay({
           }
         });
         mediaRecorderInstance.addEventListener("stop", () => {
-          const recordedBlob = new Blob(chunks, { type: "video/webm" });
+          const recordedBlob = new Blob(chunks, { type: "video/mp4" });
           webcamCurrentRecord.current = recordedBlob;
         });
         mediaRecorderInstance.start();
@@ -210,8 +226,6 @@ export default function SectionPlay({
 
   useEffect(() => {
     if (isFullBody && dancerJsonData) {
-      console.log("🚀 ~ file: index.tsx:213 ~ useEffect ~ dancerJsonData:", dancerJsonData)
-
       const timer = setTimeout(async () => {
         // 연습 시작
         dispatch(practiceActions.playVideo());
@@ -251,16 +265,19 @@ export default function SectionPlay({
     isForceEnd,
   ]);
 
+  const messageColor = {
+    Excellent: "rgb(54, 162, 235)",
+    Great: "rgb(75, 192, 192)",
+    Good: "rgb(255, 159, 64)",
+    Miss: "rgb(255, 99, 132)",
+  };
+
   return (
     <div className="row-center w-full gap-10">
-      <div className="row-center h-80 w-full">
+      <div className="row-center h-[700px] w-full">
         {/* //! 숏폼 UI 구현 필요 */}
         {/* 스트리밍 영역 */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+        <section
           className={`relative h-0 overflow-hidden rounded-md`}
           style={{
             width: `${videoDims.width / 2}px`,
@@ -269,18 +286,23 @@ export default function SectionPlay({
           }}
         >
           <ReactPlayer
-            url={selectedSectionUrls.map((section) => section.video)[playIndex]}
+            ref={playerRef}
+            url={
+              selectedSectionsData.map((section) => section.video)[playIndex]
+            }
             playing={isPlaying}
             width={"100%"}
             height={"100%"}
             className="absolute left-0 top-0 h-full w-full"
-            // onEnded={() => dispatch(practiceActions.finishSectionPlay())}
           />
-        </motion.section>
+        </section>
 
         <section className="relative overflow-hidden rounded-md">
           {/* 웹캠 영상 */}
-          <Webcam ref={webcamRef} mirrored={true} />
+          <Webcam
+            ref={webcamRef}
+            mirrored={true}
+          />
 
           {/* 스캘레톤 매핑 */}
           <canvas
@@ -302,9 +324,9 @@ export default function SectionPlay({
               </Button>
             </div>
           ) : count > -1 ? (
-            <div className="col-center absolute top-0 z-10 h-full w-full">
+            <div className="absolute bottom-0 z-10 h-full w-full">
               {/* 카운트 다운 */}
-              <div className="col-center h-32 w-32 rounded-full bg-background">
+              <div className="h-32 w-32 rounded-full bg-background">
                 <span className="text-5xl font-medium">{count}</span>
               </div>
             </div>
@@ -313,7 +335,12 @@ export default function SectionPlay({
           {/* 평가 UI 영역 */}
           <div className="col-center absolute bottom-4 left-4 z-10">
             {poseMessage !== "" && (
-              <span className="text-lg font-medium">{poseMessage}</span>
+              <span
+                className={`text-lg font-medium`}
+                style={{ color: messageColor[poseMessage] }}
+              >
+                {poseMessage}
+              </span>
             )}
           </div>
         </section>

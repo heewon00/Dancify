@@ -1,6 +1,7 @@
 import os
 import json
 import shutil
+import subprocess
 
 from django.conf import settings
 from django.http import JsonResponse
@@ -50,9 +51,10 @@ class EndPartDanceView(APIView):
 
         section = VideoSection.objects.get(section_id=data['sectionId'])
         dancer_part_video = section.video
-        info = '/'.join(dancer_part_video.rstrip('.m3u8').split('/')[3:])
+        info = '/'.join(dancer_part_video[:-5].split('/')[3:])
 
         dancer_video_file_extension = ''
+        danceable_video_file_extension = '.' + data['video'].name.split('.')[-1]
         s3 = get_s3_client()
 
         # 버킷 내의 객체 목록 가져오기
@@ -95,9 +97,25 @@ class EndPartDanceView(APIView):
             for chunk in danceable_video.chunks():
                 destination.write(chunk)
 
+        if dancer_video_file_extension != '.mp4':
+            print('댄서 비디오 확장자: ', dancer_video_file_extension)
+            subprocess.run(['ffmpeg', '-i', dancer_video_download_path, dancer_video_download_path.replace(danceable_video_file_extension, '.mp4')])
+            dancer_video_download_path = dancer_video_download_path.replace(danceable_video_file_extension, '.mp4')
+        if danceable_video_file_extension != '.mp4':
+            print('댄서브 비디오 확장자: ', danceable_video_file_extension)
+            subprocess.run(['ffmpeg', '-i', danceable_video_download_path, danceable_video_download_path.replace(danceable_video_file_extension, '.mp4')])
+            danceable_video_download_path = danceable_video_download_path.replace(danceable_video_file_extension, '.mp4')
+
+        # 영상 duration 추출
+        duration = self.get_video_duration(dancer_video_download_path)
+        print('duration 값: ', duration)
+
+        # 비디오 duration을 댄서블 영상에 추가(duration 추가된 새로운 파일 생성)
+        new_danceable_video_download_path = self.set_video_duration(danceable_video_download_path, danceable_video_download_path, duration)
+
         # 댄서의 오디오 추출, 댄서블의 비디오 추출
         audio = AudioFileClip(dancer_video_download_path)
-        video = VideoFileClip(danceable_video_download_path)
+        video = VideoFileClip(new_danceable_video_download_path)
 
         # 오디오, 비디오 파일 합치기
         result = video.set_audio(audio)
@@ -176,6 +194,23 @@ class EndPartDanceView(APIView):
                         section=section)
 
         return Response(status=status.HTTP_200_OK)
+
+    def get_video_duration(self, file_path):
+        cmd = ['ffprobe', '-i', file_path, '-show_entries', 'format=duration', '-v', 'quiet', '-of', 'csv=p=0']
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+
+        duration = float(result.stdout)
+        return duration
+
+    def set_video_duration(self, input_video_path, output_video_path, duration):
+        duration = str(duration)
+        tmp_output_path = output_video_path.replace('video_danceable.mp4', 'video_danceable_output.mp4')
+        cmd = ['ffmpeg', '-i', input_video_path, '-t', duration, '-c', 'copy', tmp_output_path]
+        try:
+            subprocess.run(cmd, check=True)
+            return tmp_output_path
+        except subprocess.CalledProcessError as e:
+            raise ValueError(f"Error while setting duration: {e}")
 
 
 class StartPracticeView(APIView):

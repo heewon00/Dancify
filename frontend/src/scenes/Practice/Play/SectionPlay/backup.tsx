@@ -1,6 +1,6 @@
 import { practiceActions } from "@features/practice/practiceSlice";
 import { useAppDispatch, useAppSelector } from "@toolkit/hook";
-import { IPoseMessages, IPractice } from "@type/practice";
+import { IPoseMessages, IPractice, TPoseMessage } from "@type/practice";
 import { Pose } from "@type/moveNet";
 
 import { motion } from "framer-motion";
@@ -40,7 +40,7 @@ export default function SectionPlay({
   });
 
   const [count, setCount] = useState(5);
-  const [poseMessage, setPoseMessage] = useState(""); //? 1초 마다 동작 평가를 저장
+  const [poseMessage, setPoseMessage] = useState<TPoseMessage>(""); //? 1초 마다 동작 평가를 저장
   // const [countDown, setCountDown] = useState(5);
   const {
     playIndex,
@@ -54,11 +54,11 @@ export default function SectionPlay({
   } = useAppSelector((state) => state.practice); // 선택된 섹션 인덱스 배열 가져오기
 
   const sectionId = data.sections[playIndex].sectionId;
-  // 선택된 섹션만 추출
+  // 연습 모드 or 실전 모드 구분 후 선택된 섹션의 url 배열 가져오기
   const selectedSectionUrls = isRealMode
-    ? [{ video: data.dancerPost.video }]
-    : data.sections.filter((section, index) =>
-        selectedSections.includes(index)
+    ? [data.sections[0]]
+    : data.sections.filter((section) =>
+        selectedSections.includes(section.sectionId)
       );
 
   function bodyCheckCallback() {
@@ -104,7 +104,7 @@ export default function SectionPlay({
         });
 
         mediaRecorderInstance.addEventListener("stop", () => {
-          const recordedBlob = new Blob(chunks, { type: "video/webm" });
+          const recordedBlob = new Blob(chunks, { type: "video/mp4" });
           webcamCurrentRecord.current = recordedBlob;
         });
 
