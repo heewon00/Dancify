@@ -10,9 +10,8 @@ from ai.face_mosaic.face_mosaic import face_mosaic
 from moviepy.editor import VideoFileClip, AudioFileClip
 from ai.shortform_generate.shortform_generator import generate_video
 
-AWS_DOMAIN = "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/"
-# CLOUDFRONT_DOMAIN = "http://dyago72jbsqcn.cloudfront.net"
-CLOUDFRONT_DOMAIN = "https://d2w69iexuycwsi.cloudfront.net"
+AWS_DOMAIN = os.getenv('AWS_DOMAIN')
+CLOUDFRONT_DOMAIN = os.getenv('CLOUDFRONT_DOMAIN')
 
 
 def upload_obj_to_s3(bucket_name, folder_path, file_key, object):
@@ -31,7 +30,7 @@ def upload_post_image_to_s3(user_id, image):
         image: request.FILES['image']
 
     Returns:
-        s3에 저장된 자유게시판 이미지 URL
+        s3에 저장된 자유 게시판 이미지 URL
     """
     image_file_extension = '.' + image.name.split('.')[-1]
     post_image_uuid = str(uuid.uuid4()).replace('-', '')
@@ -43,7 +42,7 @@ def upload_post_image_to_s3(user_id, image):
     upload_obj_to_s3(bucket_name, folder_path, file_key, image.read())
 
     image_url = AWS_DOMAIN + file_key
-    print('자유게시판 이미지 경로: ', image_url)
+    print('자유 게시판 이미지 경로: ', image_url)
 
     return image_url
 

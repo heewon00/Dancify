@@ -9,10 +9,8 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@components/ui/dropdown-menu";
-import DarkToggle from "@components/ui/darkToggle";
 import Link from "next/link";
 import { logOut } from "@api/auth/logOut";
 import { useAppSelector } from "@toolkit/hook";
@@ -20,7 +18,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 export function UserNav() {
-  const { nickname, profileImage } = useAppSelector((state) => state.auth);
+  const { nickname, profileImage, isDancer } = useAppSelector(
+    (state) => state.auth
+  );
   const imageUrl = profileImage ? profileImage : "/images/avatar.png";
   const router = useRouter();
 
@@ -43,15 +43,15 @@ export function UserNav() {
       </DropdownMenuTrigger>
 
       {/* 드롭다운 메뉴 */}
-      <DropdownMenuContent className="w-56" align="end" forceMount>
+      <DropdownMenuContent className="min-w-44" align="end" forceMount>
         {/* 유저 정보 */}
         <DropdownMenuLabel className="font-normal">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between space-x-2">
             <div className="flex flex-col space-y-1">
               <p className="text-sm font-medium leading-none">{nickname}</p>
             </div>
 
-            <DarkToggle />
+            <span>{isDancer ? "Dancer" : "Danceable"}</span>
           </div>
         </DropdownMenuLabel>
 
@@ -61,10 +61,9 @@ export function UserNav() {
         {/* 메뉴 목록 */}
         <DropdownMenuGroup>
           <Link href="/profile">
-            <DropdownMenuItem className="row-between w-full">
+            <DropdownMenuItem className="cursor-pointer hover:text-foreground">
               <User className="mr-2 h-4 w-4" />
               <span>Profile</span>
-              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
           </Link>
         </DropdownMenuGroup>
@@ -74,6 +73,7 @@ export function UserNav() {
 
         {/* 로그아웃 버튼 */}
         <DropdownMenuItem
+          className="cursor-pointer hover:text-foreground"
           onClick={async () => {
             const response = await logOut();
             if (response === true) {
@@ -83,7 +83,6 @@ export function UserNav() {
         >
           <LogOut className="mr-2 h-4 w-4" />
           <span>Log out</span>
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
