@@ -13,7 +13,7 @@ class Command(BaseCommand):
     def handle(self, *args: Any, **options: Any) -> str | None:
         seeder = Seed.seeder()
 
-        danceable_ids = ['dancable1', 'dancable2', 'user1', 'user2']
+        danceable_ids = ['danceable1', 'danceable2', 'danceable3', 'user1', 'user2']
         dancer_ids = ['dancer1', 'dancer2', 'dancer3']
 
         profile_image_path = 'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/profile-image/'

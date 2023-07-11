@@ -27,24 +27,24 @@ class Command(BaseCommand):
         basic_wave = [
             # 비디오
             [
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/65254fa3c7c845e2b51c8f0d1af99c34.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/basic_wave_1.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/basic_wave_2.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/basic_wave_3.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/basic_wave.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/basic_wave_1.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/basic_wave_2.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/basic_wave_3.m3u8',
             ],
             # 썸네일
             [
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/65254fa3c7c845e2b51c8f0d1af99c34-thumbnail.0000000.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/basic_wave_1.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/basic_wave_2.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/basic_wave_3.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/basic_wave-thumbnail.0000000.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/basic_wave_1.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/basic_wave_2.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/basic_wave_3.jpg',
             ],
             # 키포인트
             [
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/65254fa3c7c845e2b51c8f0d1af99c34.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/basic_wave_1.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/basic_wave_2.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/basic_wave_3.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/basic_wave.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/basic_wave_1.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/basic_wave_3.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/basic_wave_2.json',
             ]
         ]
 
@@ -52,27 +52,27 @@ class Command(BaseCommand):
         gee = [
             # 비디오
             [
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/e4089a07f4f247ba9c34f71553ed3f2b.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-gee_1.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-gee_2.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-gee_3.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-gee_4.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-gee.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-gee_1.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-gee_2.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-gee_3.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-gee_4.m3u8',
             ],
             # 썸네일
             [
-                "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/e4089a07f4f247ba9c34f71553ed3f2b-thumbnail.0000000.jpg",
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-gee_1.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-gee_2.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-gee_3.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-gee_4.jpg',
+                "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-gee-thumbnail.0000000.jpg",
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-gee_1.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-gee_2.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-gee_3.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-gee_4.jpg',
             ],
             # 키포인트
             [
-                "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/e4089a07f4f247ba9c34f71553ed3f2b.json",
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-gee_1.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-gee_2.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-gee_3.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-gee_4.json',
+                "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-gee.json",
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-gee_1.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-gee_2.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-gee_3.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-gee_4.json',
             ]
         ]
 
@@ -80,24 +80,24 @@ class Command(BaseCommand):
         genie = [
             # 비디오
             [
-                "https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/cfb250a5406c477cb8ca8fbb1a94b5e9.m3u8",
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-genie_1.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-genie_2.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-genie_3.m3u8',
+                "https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-genie.m3u8",
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-genie_1.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-genie_2.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-genie_3.m3u8',
             ],
             # 썸네일
             [
-                "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/cfb250a5406c477cb8ca8fbb1a94b5e9-thumbnail.0000000.jpg",
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-genie_1.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-genie_2.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-genie_3.jpg',
+                "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-genie-thumbnail.0000000.jpg",
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-genie_1.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-genie_2.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-genie_3.jpg',
             ],
             # 키포인트
             [
-                "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/cfb250a5406c477cb8ca8fbb1a94b5e9.json",
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-genie_1.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-genie_2.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-genie_3.json',
+                "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-genie.json",
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-genie_1.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-genie_2.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-genie_3.json',
             ]
         ]
 
@@ -105,24 +105,24 @@ class Command(BaseCommand):
         I_got_a_boy = [
             # 비디오
             [
-                "https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/c30076d55f044a9b947e6c4a1530ed2b.m3u8",
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-i_got_a_boy_1.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-i_got_a_boy_2.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-i_got_a_boy_3.m3u8',
+                "https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-i_got_a_boy.m3u8",
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-i_got_a_boy_1.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-i_got_a_boy_2.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-i_got_a_boy_3.m3u8',
             ],
             # 썸네일
             [
-                "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/c30076d55f044a9b947e6c4a1530ed2b-thumbnail.0000000.jpg",
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-i_got_a_boy_1.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-i_got_a_boy_2.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-i_got_a_boy_3.jpg',
+                "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-i_got_a_boy-thumbnail.0000000.jpg",
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-i_got_a_boy_1.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-i_got_a_boy_2.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-i_got_a_boy_3.jpg',
             ],
             # 키포인트
             [
-                "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/c30076d55f044a9b947e6c4a1530ed2b.json",
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-i_got_a_boy_1.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-i_got_a_boy_2.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-i_got_a_boy_3.json',
+                "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-i_got_a_boy.json",
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-i_got_a_boy_1.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-i_got_a_boy_2.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-i_got_a_boy_3.json',
             ]
         ]
 
@@ -130,24 +130,24 @@ class Command(BaseCommand):
         lion_heart = [
             # 비디오
             [
-                "https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/ca82e863cda44e13a809c9751179c670.m3u8",
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-lion_heart_1.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-lion_heart_2.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-lion_heart_3.m3u8',
+                "https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-lion_heart.m3u8",
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-lion_heart_1.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-lion_heart_2.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-lion_heart_3.m3u8',
             ],
             # 썸네일
             [
-                "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/ca82e863cda44e13a809c9751179c670-thumbnail.0000000.jpg",
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-lion_heart_1.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-lion_heart_2.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-lion_heart_3.jpg',
+                "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-lion_heart-thumbnail.0000000.jpg",
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-lion_heart_1.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-lion_heart_2.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-lion_heart_3.jpg',
             ],
             # 키포인트
             [
-                "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/ca82e863cda44e13a809c9751179c670.json",
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-lion_heart_1.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-lion_heart_2.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-lion_heart_3.json',
+                "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-lion_heart.json",
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-lion_heart_1.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-lion_heart_2.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-lion_heart_3.json',
             ]
         ]
 
@@ -155,30 +155,30 @@ class Command(BaseCommand):
         mrmr = [
             # 비디오
             [
-                "https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/4065037e84544eabb2c70ffdf3a710f0.m3u8",
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-mrmr_1.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-mrmr_2.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-mrmr_3.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-mrmr_4.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-mrmr_5.m3u8',
+                "https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-mrmr.m3u8",
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-mrmr_1.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-mrmr_2.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-mrmr_3.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-mrmr_4.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-mrmr_5.m3u8',
             ],
             # 썸네일
             [
-                "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/4065037e84544eabb2c70ffdf3a710f0-thumbnail.0000000.jpg",
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-mrmr_1.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-mrmr_2.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-mrmr_3.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-mrmr_4.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-mrmr_5.jpg',
+                "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-mrmr-thumbnail.0000000.jpg",
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-mrmr_1.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-mrmr_2.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-mrmr_3.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-mrmr_4.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-mrmr_5.jpg',
             ],
             # 키포인트
             [
-                "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/4065037e84544eabb2c70ffdf3a710f0.json",
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-mrmr_1.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-mrmr_2.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-mrmr_3.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-mrmr_4.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-mrmr_5.json',
+                "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-mrmr.json",
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-mrmr_1.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-mrmr_2.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-mrmr_3.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-mrmr_4.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-mrmr_5.json',
             ]
         ]
 
@@ -186,27 +186,27 @@ class Command(BaseCommand):
         party = [
             # 비디오
             [
-                "https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/03b8c61845174e4c8842ef1099025d7c.m3u8",
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-party_1.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-party_2.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-party_3.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/gg-party_4.m3u8',
+                "https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-party.m3u8",
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-party_1.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-party_2.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-party_3.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-party_4.m3u8',
             ],
             # 썸네일
             [
-                "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/03b8c61845174e4c8842ef1099025d7c-thumbnail.0000000.jpg",
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-party_1.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-party_2.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-party_3.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-party_4.jpg',
+                "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-party-thumbnail.0000000.jpg",
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-party_1.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-party_2.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-party_3.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-party_4.jpg',
             ],
             # 키포인트
             [
-                "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/03b8c61845174e4c8842ef1099025d7c.json",
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-party_1.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-party_2.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-party_3.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-party_4.json',
+                "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-party.json",
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-party_1.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-party_2.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-party_3.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-party_4.json',
             ]
         ]
 
@@ -214,30 +214,30 @@ class Command(BaseCommand):
         power_up = [
             # 비디오
             [
-                "https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/4f41bc8e0c24408db493e31c783f4f84.m3u8",
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/red_velvet-power_up_1.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/red_velvet-power_up_2.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/red_velvet-power_up_3.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/red_velvet-power_up_4.m3u8',
-                'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/ai_hub_data/red_velvet-power_up_5.m3u8',
+                "https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/red_velvet-power_up.m3u8",
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/red_velvet-power_up_1.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/red_velvet-power_up_2.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/red_velvet-power_up_3.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/red_velvet-power_up_4.m3u8',
+                'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/red_velvet-power_up_5.m3u8',
             ],
             # 썸네일
             [
-                "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/4f41bc8e0c24408db493e31c783f4f84-thumbnail.0000000.jpg",
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/red_velvet-power_up_1.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/red_velvet-power_up_2.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/red_velvet-power_up_3.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/red_velvet-power_up_4.jpg',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/red_velvet-power_up_5.jpg',
+                "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/red_velvet-power_up-thumbnail.0000000.jpg",
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/red_velvet-power_up_1.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/red_velvet-power_up_2.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/red_velvet-power_up_3.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/red_velvet-power_up_4.jpg',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/red_velvet-power_up_5.jpg',
             ],
             # 키포인트
             [
-                "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/4f41bc8e0c24408db493e31c783f4f84.json",
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/red_velvet-power_up_1.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/red_velvet-power_up_2.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/red_velvet-power_up_3.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/red_velvet-power_up_4.json',
-                'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/red_velvet-power_up_5.json',
+                "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/red_velvet-power_up.json",
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/red_velvet-power_up_1.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/red_velvet-power_up_2.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/red_velvet-power_up_3.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/red_velvet-power_up_4.json',
+                'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/red_velvet-power_up_5.json',
             ]
         ]
 

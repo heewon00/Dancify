@@ -35,45 +35,45 @@ class Command(BaseCommand):
 
         # 이미지/비디오 링크
         free_image_urls = [
-            "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/post-image/user1/7932fbfaf58247ba9c07752daf80c66d.jpg",
-            "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/post-image/user1/0a73d9820a5c486286337919d5550133.jpg",
-            "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/post-image/user1/efcadc43f27b48faa01c77c106a348a3.jpg",
-            "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/post-image/user1/6b183fc36b0d4e36bd86ecfc93a84445.jpg",
-            "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/post-image/user1/f49552f5143546ebbc5d82bb48e3494f.jpg",
-            "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/post-image/user1/b97f9186c6df48df848ce25968a22574.jpg",
+            'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/post-image/dancer1/yellow-g5adb160c8_1280.jpg',
+            'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/post-image/user1/labrador-gfca8dd6ef_1280.jpg',
+            'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/post-image/user2/old-tree-gda02f5287_1280.jpg',
+            'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/post-image/danceable1/postimage1.jpg',
+            'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/post-image/danceable1/postimage2.jpg',
+            'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/post-image/danceable1/postimage3.jpg',
         ]
 
         thumbnail_urls = [
-            'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/ef4b1b41e5834548aff789689a37d730-thumbnail.0000000.jpg',  # basic_wave
-            'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/08630a5c5ab44f098358eb43a3fe9d9b-thumbnail.0000000.jpg',  # 소녀시대 - gee
-            'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/d6be40e4d7984156bc64138e636ae36d-thumbnail.0000000.jpg',  # 소녀시대 - 소원을 말해봐
-            'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/2f5403d3b27944d2822072b570cf6fbd-thumbnail.0000000.jpg',  # 소녀시대 - I got a boy
-            'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/6990746dcae34c6e99760018b3ff3c0b-thumbnail.0000000.jpg',  # 소녀시대 - 라이온 하트
-            'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/2438e723ed0c4b7ca73c15cada13fddf-thumbnail.0000000.jpg',  # 소녀시대 - Mr.Mr
-            'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/b3565aa599a94b058c051301f94c9469-thumbnail.0000000.jpg',  # 소녀시대 - 파티
-            'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/dancer7/fdf1074b1e024384be7b1dd8c71979ee-thumbnail.0000000.jpg',  # 레드벨벳 - 파워 업
+            'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/basic_wave-thumbnail.0000000.jpg',  # basic_wave
+            "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-gee-thumbnail.0000000.jpg",  # 소녀시대 - gee
+            "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-genie-thumbnail.0000000.jpg",  # 소녀시대 - 소원을 말해봐
+            "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-i_got_a_boy-thumbnail.0000000.jpg",  # 소녀시대 - I got a boy
+            "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-lion_heart-thumbnail.0000000.jpg",  # 소녀시대 - 라이온 하트
+            "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-mrmr-thumbnail.0000000.jpg",  # 소녀시대 - Mr.Mr
+            "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/gg-party-thumbnail.0000000.jpg",  # 소녀시대 - 파티
+            "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/thumbnail/ai_hub_data/red_velvet-power_up-thumbnail.0000000.jpg",  # 레드벨벳 - 파워 업
         ]
 
         video_urls = [
-            'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/ef4b1b41e5834548aff789689a37d730.m3u8',  # basic_wave
-            'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/08630a5c5ab44f098358eb43a3fe9d9b.m3u8',  # 소녀시대 - gee
-            'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/d6be40e4d7984156bc64138e636ae36d.m3u8',  # 소녀시대 - 소원을 말해봐
-            'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/2f5403d3b27944d2822072b570cf6fbd.m3u8',  # 소녀시대 - I got a boy
-            'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/6990746dcae34c6e99760018b3ff3c0b.m3u8',  # 소녀시대 - 라이온 하트
-            'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/2438e723ed0c4b7ca73c15cada13fddf.m3u8',  # 소녀시대 - Mr.Mr
-            'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/b3565aa599a94b058c051301f94c9469.m3u8',  # 소녀시대 - 파티
-            'https://d2w69iexuycwsi.cloudfront.net/vod/dancer/dancer7/fdf1074b1e024384be7b1dd8c71979ee.m3u8',  # 레드벨벳 - 파워 업
+            'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/basic_wave.m3u8',  # basic_wave
+            'https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-gee.m3u8',  # 소녀시대 - gee
+            "https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-genie.m3u8",  # 소녀시대 - 소원을 말해봐
+            "https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-i_got_a_boy.m3u8",  # 소녀시대 - I got a boy
+            "https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-lion_heart.m3u8",  # 소녀시대 - 라이온 하트
+            "https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-mrmr.m3u8",  # 소녀시대 - Mr.Mr
+            "https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/gg-party.m3u8",  # 소녀시대 - 파티
+            "https://dl3a13mladdm5.cloudfront.net/vod/dancer/ai_hub_data/red_velvet-power_up.m3u8",  # 레드벨벳 - 파워 업
         ]
 
         keypoints_urls = [
-            'https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/basic_wave.json',  # basic_wave
-            "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/gg-gee.json",  # 소녀시대 - gee
-            "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/gg-genie.json",  # 소녀시대 - 소원을 말해봐
-            "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/gg-i_got_a_boy.json",  # 소녀시대 - I got a boy
-            "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/gg-lion_heart.json",  # 소녀시대 - 라이온 하트
-            "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/gg-mrmr.json",  # 소녀시대 - Mr.Mr
-            "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/gg-party.json",  # 소녀시대 - 파티
-            "https://dancify-bucket.s3.ap-northeast-2.amazonaws.com/key-points/dancer7/red_velvet-power_up.json",  # 레드벨벳 - 파워 업
+            'https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/basic_wave.json',  # basic_wave
+            "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-gee.json",  # 소녀시대 - gee
+            "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-genie.json",  # 소녀시대 - 소원을 말해봐
+            "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-i_got_a_boy.json",  # 소녀시대 - I got a boy
+            "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-lion_heart.json",  # 소녀시대 - 라이온 하트
+            "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-mrmr.json",  # 소녀시대 - Mr.Mr
+            "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/gg-party.json",  # 소녀시대 - 파티
+            "https://dancify-bucket2.s3.ap-northeast-2.amazonaws.com/key-points/ai_hub_data/red_velvet-power_up.json",  # 레드벨벳 - 파워 업
         ]
 
         group_names = ['르세라핌', '유키스', '아이브', '(여자)아이들',
