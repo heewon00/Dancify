@@ -1,7 +1,7 @@
 # 🕺 Dancify
 
 ### 춤을 배우고 싶은 모두를 위한 AI 안무 연습 서비스
-![포스터_최종](https://github.com/AIVLE-School-Third-Big-Project/dancify/assets/124374862/070c9340-09a1-4089-bed5-3ec692ead3dd)
+![포스터_최종](https://github.com/heewon00/dancify/assets/55778040/00fb37f4-351a-4332-9f10-ede464dc1d7c)
 
 ## 목차
 1. [프로젝트 소개](#1-프로젝트-소개)
@@ -47,25 +47,25 @@
 - AI를 통해 실시간 점수와 구간별 점수를 제공받을 수 있습니다.
 - 음성 조작을 통해 보다 편리한 사용자 경험을 제공합니다.
 
-<img width="2044" alt="댄서게시판1" src="https://github.com/AIVLE-School-Third-Big-Project/dancify/assets/124374862/628803df-67ca-40e8-b293-a7f5ebecadff">
-<img width="2044" alt="댄서 게시판2" src="https://github.com/AIVLE-School-Third-Big-Project/dancify/assets/124374862/ce140a06-47bc-4c87-9f46-ef7ae8f1dbc9">
-<img width="2044" alt="댄서게시판3" src="https://github.com/AIVLE-School-Third-Big-Project/dancify/assets/124374862/a0c186a1-00c0-4815-bdf3-45ca3415eefa">
-<img width="2044" alt="댄서게시판4" src="https://github.com/AIVLE-School-Third-Big-Project/dancify/assets/124374862/42bccfe2-0ba8-4000-b3b1-08a90dd4c6bb">
+<img width="2044" alt="댄서게시판1" src="https://github.com/heewon00/dancify/assets/55778040/551e82be-c2eb-44b4-a331-d3b98582024c">
+<img width="2044" alt="댄서 게시판2" src="https://github.com/heewon00/dancify/assets/55778040/e59803cf-ad90-4db3-993b-455a5e2d3a3a">
+<img width="2044" alt="댄서게시판3" src="https://github.com/heewon00/dancify/assets/55778040/e1c14f05-c55e-4fca-8d3f-50788eab9f68">
+<img width="2044" alt="댄서게시판4" src="https://github.com/heewon00/dancify/assets/55778040/86605f34-9b16-4d5e-a4da-8f96a2c89e15">
 
 ### **2.2 자랑 게시판**
 
 - 자랑 게시판을 통해 자신이 춘 춤 영상을 공유할 수 있습니다.
 
-<img width="2044" alt="자랑게시판1" src="https://github.com/AIVLE-School-Third-Big-Project/dancify/assets/124374862/2d63b539-7ba9-4a75-8ab0-cbe9cf032510">
-<img width="2044" alt="자랑게시판2" src="https://github.com/AIVLE-School-Third-Big-Project/dancify/assets/124374862/72bdc06f-3d37-4754-95c0-63e1430ebf61">
+<img width="2044" alt="자랑게시판1" src="https://github.com/heewon00/dancify/assets/55778040/96ca2152-f93b-4ebc-a095-a2db6050d87f">
+<img width="2044" alt="자랑게시판2" src="https://github.com/heewon00/dancify/assets/55778040/13b1ea19-0781-4508-92eb-6b16ece5a2b8">
 
 
 ### **2.3 자유 게시판**
 
 - 자유 게시판을 통해 사람들과 소통할 수 있습니다.
 
-<img width="2044" alt="자유게시판1" src="https://github.com/AIVLE-School-Third-Big-Project/dancify/assets/124374862/79c8a62e-e195-4efc-838d-672d6fe3813b">
-<img width="2044" alt="자유게시판2" src="https://github.com/AIVLE-School-Third-Big-Project/dancify/assets/124374862/feb06802-c04c-4f0d-b625-b1b201147bd7">
+<img width="2044" alt="자유게시판1" src="https://github.com/heewon00/dancify/assets/55778040/201c6426-e98d-42ba-bf70-f4ff37dea78c">
+<img width="2044" alt="자유게시판2" src="https://github.com/heewon00/dancify/assets/55778040/57b46586-096e-4b00-bc4b-b55ae752afb3">
 
 
 ### **2.4 피드백 동영상**
@@ -73,23 +73,24 @@
 - 자신이 춘 춤 영상을 관리하고 댄서에게 피드백을 요청할 수 있습니다.
 - 신체 부위별 AI 피드백을 받을 수 있습니다.
 
-<img width="2044" alt="피드백게시판1" src="https://github.com/AIVLE-School-Third-Big-Project/dancify/assets/124374862/77f7416d-1ee7-4074-bfa9-7b02c37fc865">
+<img width="2044" alt="피드백게시판1" src="https://github.com/heewon00/dancify/assets/55778040/4e16a0fa-16df-47d9-bb21-967765788fc7">
 
 <br>
 
 ## **3. 프로젝트 아키텍처**
 
 ### Infrastructure
-![인프라](https://github.com/AIVLE-School-Third-Big-Project/dancify/assets/124374862/1ad1ec13-5500-43fd-b791-edd9c838adba)
+![인프라](https://github.com/heewon00/dancify/assets/55778040/654b8c49-5822-4d27-8881-4a98c8c4452d)
 
 ### ERD
-![ERD](https://github.com/AIVLE-School-Third-Big-Project/dancify/assets/124374862/ab4db85e-9287-44f5-852c-1b9327d72e89)
+![ERD](https://github.com/heewon00/dancify/assets/55778040/52fd1c5a-7187-4c26-aa55-806e2b6d0d98)
+
 
 <br>
 
 ## **4. 데이터셋**
 
-<img width="869" alt="데이터셋" src="https://github.com/AIVLE-School-Third-Big-Project/dancify/assets/124374862/744a3d41-4574-40a0-8ecd-5a5eee11827d">
+<img width="869" alt="데이터셋" src="https://github.com/heewon00/dancify/assets/55778040/d3b6904b-e4a3-4970-a7c5-c674128e2c4b">
 
 [데이터셋 페이지로 이동 🚀](https://aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=52)
 
